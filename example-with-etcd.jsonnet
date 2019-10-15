@@ -49,9 +49,9 @@ local kp = (import 'kube-prometheus/kube-prometheus.libsonnet') +
       //  * But if you have multiple etcd nodes, you will need to use 'insecureSkipVerify: true' (if using default certificate generators method), as the valid certificate domain
       //    will be different for each etcd node. (kube-aws default certificates are not valid against the IP - they were created for the DNS.)
     },
-    prometheusRules+:: {
-        groups+: (import 'rules.json').groups,
-      },
+    // prometheusRules+:: {
+    //   groups+: (import 'rules.json').groups,
+    // },
   },
 };
 
