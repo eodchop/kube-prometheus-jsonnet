@@ -1,3 +1,11 @@
-# kube-prometheus
+# kube-prometheus-jsonnet
 
-Deployment configuration based on work done [here](https://github.com/coreos/kube-prometheus)
+Jsonnet configuration based on work done [here](https://github.com/coreos/kube-prometheus)
+
+## Dependencies
+
+Install these tools before you begin using [kube-prometheus](https://github.com/coreos/kube-prometheus#installing)
+
+- [jsonnet](https://github.com/google/jsonnet)
+- [jsonnet-bundler](https://github.com/jsonnet-bundler)
+- [gojsontoyaml](https://github.com/brancz/gojsontoyaml)
