@@ -1,6 +1,6 @@
 # kube-prometheus-jsonnet
 
-Jsonnet configuration based on work done [here](https://github.com/coreos/kube-prometheus)
+Jsonnet configuration derived from [kube-prometheus](https://github.com/coreos/kube-prometheus)
 
 ## Dependencies
 
