@@ -10,9 +10,6 @@ local kp =
     _config+:: {
       namespace: 'monitoring',
     },
-    prometheus+:: {
-      namespaces+: ['pks-system'],
-    },
   };
 
 { ['00namespace-' + name]: kp.kubePrometheus[name] for name in std.objectFields(kp.kubePrometheus) } +

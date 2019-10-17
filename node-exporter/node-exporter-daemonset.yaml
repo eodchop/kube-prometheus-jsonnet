@@ -4,7 +4,7 @@ metadata:
   labels:
     app: node-exporter
   name: node-exporter
-  namespace: pks-system
+  namespace: monitoring
 spec:
   selector:
     matchLabels:
