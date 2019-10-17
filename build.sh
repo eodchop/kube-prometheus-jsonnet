@@ -8,8 +8,8 @@ set -x
 set -o pipefail
 
 # Make sure to start with a clean 'manifests' dir
-# rm -rf manifests
-# mkdir manifests
+rm -rf manifests
+mkdir manifests
 
 # optional, but we would like to generate yaml, not json
 jsonnet -J vendor -m manifests "${1-example.jsonnet}" | \
