@@ -25,9 +25,9 @@ local kp = (import 'kube-prometheus/kube-prometheus.libsonnet') +
       //clientCA: importstr 'etcd-client-ca.crt',
       //clientKey: importstr 'etcd-client.key',
       //clientCert: importstr 'etcd-client.crt',
-      clientCA: /var/vcap/jobs/kube-apiserver/config/etcd-client-ca.crt,
-      clientKey: /var/vcap/jobs/kube-apiserver/config/etcd-client.key,
-      clientCert: /var/vcap/jobs/kube-apiserver/config/etcd-client.crt,
+      clientCA: "/var/vcap/jobs/kube-apiserver/config/etcd-client-ca.crt",
+      clientKey: "/var/vcap/jobs/kube-apiserver/config/etcd-client.key",
+      clientCert: "/var/vcap/jobs/kube-apiserver/config/etcd-client.crt",
 
       // Note that you should specify a value EITHER for 'serverName' OR for 'insecureSkipVerify'. (Don't specify a value for both of them, and don't specify a value for neither of them.)
       // * Specifying serverName: Ideally you should provide a valid value for serverName (and then insecureSkipVerify should be left as false - so that serverName gets used).
