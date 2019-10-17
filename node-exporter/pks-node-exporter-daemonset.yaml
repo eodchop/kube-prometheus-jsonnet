@@ -1,0 +1,85 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  annotations:
+    deprecated.daemonset.template.generation: "1"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"DaemonSet","metadata":{"annotations":{},"labels":{"app":"node-exporter","nodeExporter":"true","safeToDelete":"true"},"name":"node-exporter","namespace":"pks-system"},"spec":{"selector":{"matchLabels":{"app":"node-exporter"}},"template":{"metadata":{"labels":{"app":"node-exporter"}},"spec":{"containers":[{"args":["--path.procfs=/host/proc","--path.sysfs=/host/sys"],"image":"epks-docker-local.artifactory.eng.vmware.com/oratos/node-exporter:dea87263fc8e6d3a2a122f5f5e31b36afbeef369","imagePullPolicy":"Never","name":"prometheus-node-exporter","ports":[{"containerPort":9100,"name":"metrics"}],"resources":{"limits":{"cpu":"10m","memory":"50Mi"},"requests":{"cpu":"10m","memory":"50Mi"}},"volumeMounts":[{"mountPath":"/host/proc","name":"proc","readOnly":true},{"mountPath":"/host/sys","name":"sys","readOnly":true}]}],"hostPID":true,"serviceAccountName":"node-exporter","volumes":[{"hostPath":{"path":"/proc"},"name":"proc"},{"hostPath":{"path":"/sys"},"name":"sys"}]}},"updateStrategy":{"type":"RollingUpdate"}}}
+  creationTimestamp: "2019-10-17T22:00:26Z"
+  generation: 1
+  labels:
+    app: node-exporter
+    nodeExporter: "true"
+    safeToDelete: "true"
+  name: node-exporter
+  namespace: pks-system
+  resourceVersion: "1206"
+  selfLink: /apis/apps/v1/namespaces/pks-system/daemonsets/node-exporter
+  uid: 866ed297-f129-11e9-8d01-0050569aa01d
+spec:
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: node-exporter
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: node-exporter
+    spec:
+      containers:
+      - args:
+        - --path.procfs=/host/proc
+        - --path.sysfs=/host/sys
+        image: epks-docker-local.artifactory.eng.vmware.com/oratos/node-exporter:dea87263fc8e6d3a2a122f5f5e31b36afbeef369
+        imagePullPolicy: Never
+        name: prometheus-node-exporter
+        ports:
+        - containerPort: 9100
+          name: metrics
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 10m
+            memory: 50Mi
+          requests:
+            cpu: 10m
+            memory: 50Mi
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /host/proc
+          name: proc
+          readOnly: true
+        - mountPath: /host/sys
+          name: sys
+          readOnly: true
+      dnsPolicy: ClusterFirst
+      hostPID: true
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      serviceAccount: node-exporter
+      serviceAccountName: node-exporter
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - hostPath:
+          path: /proc
+          type: ""
+        name: proc
+      - hostPath:
+          path: /sys
+          type: ""
+        name: sys
+  updateStrategy:
+    rollingUpdate:
+      maxUnavailable: 1
+    type: RollingUpdate
+status:
+  currentNumberScheduled: 1
+  desiredNumberScheduled: 1
+  numberAvailable: 1
+  numberMisscheduled: 0
+  numberReady: 1
+  observedGeneration: 1
+  updatedNumberScheduled: 1
