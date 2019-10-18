@@ -5,13 +5,13 @@ local kp = (import 'kube-prometheus/kube-prometheus.libsonnet') +
     namespace: 'monitoring',
 
     prometheus+:: {
-      namespaces+: ['pks-system', 'istio-system'],
+      namespaces+: ['pks-system'],
     },
 
     // Reference info: https://github.com/coreos/kube-prometheus/blob/master/README.md#static-etcd-configuration
     etcd+:: {
       // Configure this to be the IP(s) to scrape - i.e. your etcd node(s) (use commas to separate multiple values).
-      ips: ['172.28.0.2', '172.28.0.3', '172.28.0.4'],
+      ips: ['172.28.0.2'],
 
       // Reference info:
       //  * https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#servicemonitorspec (has endpoints)
@@ -61,4 +61,5 @@ local kp = (import 'kube-prometheus/kube-prometheus.libsonnet') +
 { ['kube-state-metrics-' + name]: kp.kubeStateMetrics[name] for name in std.objectFields(kp.kubeStateMetrics) } +
 { ['alertmanager-' + name]: kp.alertmanager[name] for name in std.objectFields(kp.alertmanager) } +
 { ['prometheus-' + name]: kp.prometheus[name] for name in std.objectFields(kp.prometheus) } +
+{ ['prometheus-adapter-' + name]: kp.prometheusAdapter[name] for name in std.objectFields(kp.prometheusAdapter) } +
 { ['grafana-' + name]: kp.grafana[name] for name in std.objectFields(kp.grafana) }

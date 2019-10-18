@@ -12,11 +12,19 @@ local kp =
   // (import 'kube-prometheus/kube-prometheus-anti-affinity.libsonnet') +
   // (import 'kube-prometheus/kube-prometheus-managed-cluster.libsonnet') +
   // (import 'kube-prometheus/kube-prometheus-node-ports.libsonnet') +
-  // (import 'kube-prometheus/kube-prometheus-static-etcd.libsonnet') +
+  (import 'kube-prometheus/kube-prometheus-static-etcd.libsonnet') +
   // (import 'kube-prometheus/kube-prometheus-thanos-sidecar.libsonnet') +
   {
     _config+:: {
       namespace: 'monitoring',
+      etcd+:: {
+        ips: ['172.28.0.2'],
+        clientCA: importstr 'etcd-ca.crt',
+        clientKey: importstr 'etcd-client.key',
+        clientCert: importstr 'etcd-client.crt',
+        // insecureSkipVerify: true,
+        serverName: '*.etcd.cfcr.internal',
+      },
     },
     nodeExporter+: {
       daemonset+:
