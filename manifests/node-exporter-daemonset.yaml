@@ -85,14 +85,3 @@ spec:
       - hostPath:
           path: /
         name: root
-volumeMounts:
-- mountPath: /host/proc
-  name: proc
-  readOnly: false
-- mountPath: /host/sys
-  name: sys
-  readOnly: false
-- mountPath: /host/root
-  mountPropagation: Bidirectional
-  name: root
-  readOnly: false
