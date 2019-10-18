@@ -6,7 +6,7 @@ metadata:
     nodeExporter: "true"
     safeToDelete: "true"
   name: node-exporter
-  namespace: pks-system
+  namespace: monitoring
 spec:
   selector:
     matchLabels:
