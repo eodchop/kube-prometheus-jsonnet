@@ -19,6 +19,15 @@ Build the kubernetes object definitions
 ```
 
 Create the kubernetes objects
+
 ```bash
 kubectl apply -f manifests/
+```
+
+Port forward services
+
+```bash
+namespace=monitoring kubectl --namespace "${namespace}" port-forward svc/grafana 3000
+namespace=monitoring kubectl --namespace "${namespace}" port-forward service/alertmanager-main 9093
+namespace=monitoring kubectl --namespace "${namespace}" port-forward service/prometheus-k8s 9090
 ```
