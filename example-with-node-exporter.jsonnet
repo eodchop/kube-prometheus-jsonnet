@@ -18,7 +18,7 @@ local kp =
     _config+:: {
       namespace: 'monitoring',
       etcd+:: {
-        ips: ['172.28.0.2'],
+        ips: ['172.28.1.2', '172.28.1.3', '172.28.1.4'],
         clientCA: importstr 'etcd-ca.crt',
         clientKey: importstr 'etcd-client.key',
         clientCert: importstr 'etcd-client.crt',

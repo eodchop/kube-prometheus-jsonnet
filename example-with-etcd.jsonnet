@@ -11,7 +11,7 @@ local kp = (import 'kube-prometheus/kube-prometheus.libsonnet') +
     // Reference info: https://github.com/coreos/kube-prometheus/blob/master/README.md#static-etcd-configuration
     etcd+:: {
       // Configure this to be the IP(s) to scrape - i.e. your etcd node(s) (use commas to separate multiple values).
-      ips: ['172.28.0.2'],
+      ips: ['172.28.1.2', '172.28.1.3', '172.28.1.4'],
 
       // Reference info:
       //  * https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#servicemonitorspec (has endpoints)
